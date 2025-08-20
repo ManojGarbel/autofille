@@ -19,31 +19,34 @@ export default function DashboardPage() {
   }, [userId]);
 
   return (
-    <main className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4">Dashboard</h1>
-      <div className="grid gap-4 sm:grid-cols-2 mb-8">
-        <Link href="/profile" className="block p-4 rounded-lg border hover:shadow-sm">
-          <h2 className="font-medium">Add/Edit Profile</h2>
-          <p className="text-sm text-gray-600">Update your stored details.</p>
-        </Link>
-        <div className="block p-4 rounded-lg border">
-          <h2 className="font-medium">Generate Bookmarklet</h2>
-          <p className="text-sm text-gray-600 mb-2">Drag the button to your bookmarks bar, or copy the link.</p>
-          <div className="flex items-center gap-2">
-            <a className="px-3 py-2 text-sm rounded bg-black text-white disabled:opacity-50" href={bookmarklet} onClick={(e)=>{}}>
-              Auto-Fill
-            </a>
-            <button className="px-3 py-2 text-sm rounded border" onClick={() => navigator.clipboard.writeText(bookmarklet)} disabled={!bookmarklet}>
-              Copy Link
-            </button>
-          </div>
-          <p className="text-xs text-gray-500 mt-2 break-all">{bookmarklet || 'Generating...'}</p>
+    <main className="max-w-5xl mx-auto p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h1 className="text-3xl font-bold">Dashboard</h1>
+          <p className="text-sm text-gray-600">Manage your profile and generate your auto-fill link.</p>
         </div>
+        <Link href="/profile" className="btn btn-outline">Edit Profile</Link>
       </div>
 
-      <div className="text-sm text-gray-600">
-        <p><span className="font-medium">Your ID:</span> {userId ?? '...'}</p>
-        <p className="mt-2">This ID is stored locally to fetch your data without login.</p>
+      <div className="grid gap-6 md:grid-cols-3">
+        <div className="card p-5 md:col-span-2">
+          <h2 className="font-semibold mb-2">Your Bookmarklet</h2>
+          <p className="text-sm text-gray-600 mb-3">Drag this button to your bookmarks bar or copy the link below.</p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a className="btn btn-primary" href={bookmarklet} onClick={(e)=>{}}>Auto-Fill</a>
+            <button className="btn btn-outline" onClick={() => navigator.clipboard.writeText(bookmarklet)} disabled={!bookmarklet}>Copy Link</button>
+          </div>
+          <div className="mt-3 p-3 bg-gray-50 border rounded text-xs break-all select-all">{bookmarklet || 'Generating...'}</div>
+        </div>
+
+        <div className="card p-5">
+          <h2 className="font-semibold mb-2">Profile Status</h2>
+          <ul className="text-sm text-gray-700 space-y-1">
+            <li><span className="text-gray-500">User ID:</span> <span className="font-mono">{userId ?? '...'}</span></li>
+            <li className="text-gray-500">Stored locally in your browser</li>
+          </ul>
+          <Link href="/profile" className="mt-4 btn btn-outline w-full text-center">Update Details</Link>
+        </div>
       </div>
     </main>
   );

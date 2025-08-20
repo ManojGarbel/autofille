@@ -15,3 +15,31 @@ body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
 }
+
+/* Subtle grid and gradient background */
+body {
+  background-image:
+    radial-gradient(ellipse at top, rgba(59,130,246,0.15), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(236,72,153,0.12), transparent 60%),
+    linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.8)),
+    linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 24px 24px, 24px 24px;
+  background-position: center center, center center, center center, center center, center center;
+}
+
+.card {
+  @apply rounded-xl border border-gray-200/80 bg-white/70 backdrop-blur-md shadow-sm;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors;
+}
+
+.btn-primary {
+  @apply bg-gradient-to-r from-blue-600 to-fuchsia-500 text-white hover:from-blue-700 hover:to-fuchsia-600 shadow;
+}
+
+.btn-outline {
+  @apply border border-gray-300 hover:bg-gray-50;
+}

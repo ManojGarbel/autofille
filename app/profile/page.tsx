@@ -91,16 +91,19 @@ export default function ProfilePage() {
   }
 
   if (loading) {
-    return <main className="max-w-3xl mx-auto p-6">Loading...</main>;
+    return <main className="max-w-4xl mx-auto p-6">Loading...</main>;
   }
 
   return (
-    <main className="max-w-3xl mx-auto p-6">
-      <h1 className="text-2xl font-semibold mb-4">Profile</h1>
-      <form onSubmit={onSubmit} className="grid gap-4">
+    <main className="max-w-4xl mx-auto p-6">
+      <div className="mb-6">
+        <h1 className="text-3xl font-bold">Profile</h1>
+        <p className="text-sm text-gray-600">Fill in your personal, contact, and academic information.</p>
+      </div>
+      <form onSubmit={onSubmit} className="grid gap-6">
         <section>
-          <h2 className="font-medium mb-2">Personal</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <h2 className="font-semibold mb-3">Personal</h2>
+          <div className="card p-4 grid gap-4 sm:grid-cols-2">
             {input('name', 'Full Name')}
             {input('dob', 'Date of Birth', 'date')}
             {input('email', 'Email', 'email')}
@@ -109,8 +112,8 @@ export default function ProfilePage() {
         </section>
 
         <section>
-          <h2 className="font-medium mb-2">Address</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <h2 className="font-semibold mb-3">Address</h2>
+          <div className="card p-4 grid gap-4 sm:grid-cols-2">
             {input('address', 'Address Line')}
             {input('city', 'City')}
             {input('state', 'State')}
@@ -119,8 +122,8 @@ export default function ProfilePage() {
         </section>
 
         <section>
-          <h2 className="font-medium mb-2">Parents / Guardian</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <h2 className="font-semibold mb-3">Parents / Guardian</h2>
+          <div className="card p-4 grid gap-4 sm:grid-cols-2">
             {input('fatherName', 'Father Name')}
             {input('motherName', 'Mother Name')}
             {input('guardianName', 'Guardian Name')}
@@ -128,8 +131,8 @@ export default function ProfilePage() {
         </section>
 
         <section>
-          <h2 className="font-medium mb-2">Education</h2>
-          <div className="grid gap-4 sm:grid-cols-2">
+          <h2 className="font-semibold mb-3">Education</h2>
+          <div className="card p-4 grid gap-4 sm:grid-cols-2">
             {input('school', 'School')}
             {input('college', 'College')}
             {input('university', 'University')}
@@ -146,7 +149,7 @@ export default function ProfilePage() {
         </section>
 
         <div className="flex items-center gap-3">
-          <button disabled={saving} className="px-4 py-2 rounded bg-black text-white disabled:opacity-50">{saving ? 'Saving...' : 'Save'}</button>
+          <button disabled={saving} className="btn btn-primary disabled:opacity-50">{saving ? 'Saving...' : 'Save'}</button>
           {saved && <span className="text-green-600 text-sm">Saved!</span>}
           {error && <span className="text-red-600 text-sm">{error}</span>}
         </div>

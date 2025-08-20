@@ -18,8 +18,10 @@ Setup
 
 Deployment & KV
 ---------------
-- Set Vercel KV environment variables in your deployment environment so that `@vercel/kv` can connect.
-- Optionally set `NEXT_PUBLIC_BASE_URL` to your site URL for bookmarklet fetches (falls back to relative `/api/profile`).
+- On Vercel, create a Redis database (Vercel KV) and attach it to your project.
+- Vercel will inject the required env vars automatically when KV is linked. Locally, copy `.env.example` to `.env` and fill values if testing against a remote KV.
+- Set `NEXT_PUBLIC_BASE_URL` to your deployed site URL (e.g., `https://your-app.vercel.app`) so the bookmarklet can fetch your profile across sites. It falls back to the current page origin if not set.
+- The API runs on the Edge runtime and includes permissive CORS, so the bookmarklet can fetch your profile from other domains.
 
 Bookmarklet
 -----------

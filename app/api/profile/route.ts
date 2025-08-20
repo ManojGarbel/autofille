@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { kv } from '@vercel/kv';
 
+export const runtime = 'edge';
+export const dynamic = 'force-dynamic';
+
 function withCors(res: NextResponse) {
   res.headers.set('Access-Control-Allow-Origin', '*');
   res.headers.set('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');

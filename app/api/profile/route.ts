@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { kv } from '@vercel/kv';
+import { getRedis } from '../../../lib/redis';
 
-export const runtime = 'edge';
+export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 function withCors(res: NextResponse) {
@@ -19,8 +19,10 @@ export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const id = searchParams.get('id');
   if (!id) return withCors(NextResponse.json({ error: 'missing id' }, { status: 400 }));
-  const data = await kv.get(`profile:${id}`);
-  return withCors(NextResponse.json(data || {}));
+  const redis = getRedis();
+  const raw = await redis.get(`profile:${id}`);
+  const data = raw ? JSON.parse(raw) : {};
+  return withCors(NextResponse.json(data));
 }
 
 export async function POST(req: NextRequest) {
@@ -28,6 +30,7 @@ export async function POST(req: NextRequest) {
   const id = searchParams.get('id');
   if (!id) return withCors(NextResponse.json({ error: 'missing id' }, { status: 400 }));
   const body = await req.json();
-  await kv.set(`profile:${id}`, body);
+  const redis = getRedis();
+  await redis.set(`profile:${id}`, JSON.stringify(body));
   return withCors(NextResponse.json({ ok: true }));
 }

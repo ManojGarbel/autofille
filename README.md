@@ -16,12 +16,12 @@ Setup
 2. Run dev server:
    - `npm run dev`
 
-Deployment & KV
----------------
-- On Vercel, create a Redis database (Vercel KV) and attach it to your project.
-- Vercel will inject the required env vars automatically when KV is linked. Locally, copy `.env.example` to `.env` and fill values if testing against a remote KV.
-- Set `NEXT_PUBLIC_BASE_URL` to your deployed site URL (e.g., `https://your-app.vercel.app`) so the bookmarklet can fetch your profile across sites. It falls back to the current page origin if not set.
-- The API runs on the Edge runtime and includes permissive CORS, so the bookmarklet can fetch your profile from other domains.
+Deployment & Redis
+------------------
+- If you're using Vercel Redis (Upstash), set `REDIS_URL` in Project Settings → Environment Variables. Example: `rediss://:password@us1-upward-whatever.upstash.io:6379`.
+- Locally, copy `.env.example` to `.env` and set `REDIS_URL` to a test Redis URL if needed.
+- Set `NEXT_PUBLIC_BASE_URL` to your deployed site URL (e.g., `https://your-app.vercel.app`) so the bookmarklet can fetch your profile across sites.
+- The API uses Node.js runtime and ioredis with permissive CORS.
 
 Bookmarklet
 -----------

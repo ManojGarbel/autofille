@@ -43,6 +43,30 @@ export default function HowToPage() {
           </ul>
         </div>
       </div>
+
+      <div className="mt-8 card p-4">
+        <div className="font-semibold mb-2">Mobile Browsers (iOS & Android)</div>
+        <div className="grid gap-4 md:grid-cols-2 text-sm text-gray-700">
+          <div>
+            <div className="font-medium mb-1">iOS Safari</div>
+            <ol className="list-decimal pl-5 space-y-1">
+              <li>On the Dashboard, tap "Copy Code (Mobile)".</li>
+              <li>Safari → Share → Add Bookmark. Name it "Auto-Fill".</li>
+              <li>Open Bookmarks → Edit → select "Auto-Fill" → paste the code into the URL field → Done.</li>
+              <li>Visit any form and tap the "Auto-Fill" bookmark.</li>
+            </ol>
+          </div>
+          <div>
+            <div className="font-medium mb-1">Android Chrome</div>
+            <ol className="list-decimal pl-5 space-y-1">
+              <li>On the Dashboard, tap "Copy Code (Mobile)".</li>
+              <li>Chrome → bookmark any page → Edit bookmark.</li>
+              <li>Set name to "Auto-Fill" and paste the code into the URL field.</li>
+              <li>Open the bookmark from the bookmarks manager while on a form.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }

@@ -35,6 +35,10 @@ export default function HomePage() {
             <div className="text-xs text-gray-600">Edit your details as life changes.</div>
           </div>
         </div>
+
+        <div className="mt-10">
+          <Link href="/how-to" className="text-sm text-blue-700 hover:underline">How to use this tool →</Link>
+        </div>
       </div>
     </main>
   );

@@ -26,6 +26,7 @@ export default function RootLayout({
             <nav className="hidden sm:flex items-center gap-3 text-sm">
               <a className="hover:underline" href="/dashboard">Dashboard</a>
               <a className="hover:underline" href="/profile">Profile</a>
+              <a className="hover:underline" href="/how-to">How to</a>
             </nav>
           </div>
         </header>

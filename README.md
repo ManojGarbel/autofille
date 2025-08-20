@@ -27,3 +27,11 @@ Bookmarklet
 -----------
 - Go to Dashboard -> Generate Bookmarklet and drag the "Auto-Fill" button to your bookmarks bar.
 - Click it on any form page to attempt auto-fill using your saved profile.
+
+User Instructions
+-----------------
+1. Open the deployed site. A unique ID is created and stored locally.
+2. Go to `Profile`, fill your details, and click `Save`.
+3. Go to `Dashboard` and drag the `Auto-Fill` button to your bookmarks bar, or copy the link and create a bookmark.
+4. On any online form page, click your `Auto-Fill` bookmark to prefill common fields (name, email, phone, address, education, etc.).
+5. Update your profile anytime; the bookmarklet uses your latest saved data.
